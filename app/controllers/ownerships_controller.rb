@@ -31,7 +31,7 @@ class OwnershipsController < ApplicationController
     # params[:type]の値にHaveボタンが押された時には「Have」,
     # Wantボタンが押された時には「Want」が設定されています。
     if params[:type] == "Have"
-      
+      User.find
     elsif params[:type] == "Want"
     
     end
