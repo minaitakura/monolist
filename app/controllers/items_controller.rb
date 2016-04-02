@@ -4,11 +4,15 @@ class ItemsController < ApplicationController
 
   def new
     if params[:q]
+      begin
       response = Amazon::Ecs.item_search(params[:q] , 
                                   :search_index => 'All' , 
                                   :response_group => 'Medium' , 
                                   :country => 'jp')
       @amazon_items = response.items
+      rescue Amazon::RequestError => e
+        return render :js => "alert('#{e.message}')"
+      end
     end
   end
 
